@@ -22,7 +22,7 @@ function ProjectDetails() {
 
   return (
     <>
-      <Header title={"Github project" ?? repo?.name} />
+      <Header title={`GitHub Explorer: ${repo?.name ?? ""}`} />
       <Main>
         <h1>Project Details</h1>
         {repo ? <>{JSON.stringify(repo)}</> : <Loader />}
