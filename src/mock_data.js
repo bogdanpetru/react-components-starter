@@ -1,4 +1,4 @@
-export const mockProjects = {
+export const mockRepos = {
   total_count: 37770,
   incomplete_results: false,
   items: [
@@ -4400,8 +4400,4 @@ export const mockProjects = {
       score: 1.0,
     },
   ],
-};
-
-export const getProject = (full_name) => {
-  return mockProjects.items.find((project) => project.full_name === full_name);
 };

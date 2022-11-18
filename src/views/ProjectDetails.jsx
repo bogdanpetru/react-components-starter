@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Loader from "../components/Loader";
 import Main from "../components/Main";
-import { getProject } from "../dataService";
+import { getRepo, getMockRepo } from "../dataService";
 
 function useQuery() {
   const { search } = useLocation();
@@ -15,7 +15,7 @@ function ProjectDetails() {
   const [repo, setRepo] = useState(null);
 
   useEffect(() => {
-    getProject(query.get("q")).then((data) => {
+    getRepo(query.get("q")).then((data) => {
       setRepo(data);
     });
   }, []);
@@ -25,7 +25,17 @@ function ProjectDetails() {
       <Header title={`GitHub Explorer: ${repo?.name ?? ""}`} />
       <Main>
         <h1>Project Details</h1>
-        {repo ? <>{JSON.stringify(repo)}</> : <Loader />}
+        <div>
+          <h2>{repo?.name}</h2>
+          <p>
+            <b>Owner: {repo?.owner?.login ?? ""}</b>
+          </p>
+          <p>{repo?.description}</p>
+          {repo?.owner?.avatar_url && (
+            <img className="owner-avatar" src={repo.owner.avatar_url} />
+          )}
+        </div>
+        {repo ? <pre>{JSON.stringify(repo, null, 2)}</pre> : <Loader />}
       </Main>
     </>
   );

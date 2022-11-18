@@ -6,14 +6,12 @@ import ProjectDetails from "./views/ProjectDetails";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<ProjectList />} />
-          <Route path="view" element={<ProjectDetails />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<ProjectList />} />
+        <Route path="view" element={<ProjectDetails />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

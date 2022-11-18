@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getProjects } from "../../dataService";
+import {
+  getRepos,
+  // getMockProjects
+} from "../../dataService";
 import Header from "../../components/Header";
 import Loader from "../../components/Loader";
 import Main from "../../components/Main";
@@ -14,14 +17,14 @@ function ProjectList() {
 
   useEffect(() => {
     setLoading(true);
-    getProjects().then((data) => {
+    getRepos().then((data) => {
       setData(data);
       setLoading(false);
     });
   }, []);
 
   return (
-    <div>
+    <>
       <Header title={title} />
       <Main>
         <Search
@@ -30,7 +33,7 @@ function ProjectList() {
           value={search}
           onSubmit={() => {
             setLoading(true);
-            getProjects(search).then((data) => {
+            getRepos(search).then((data) => {
               setData(data);
               setLoading(false);
             });
@@ -38,7 +41,7 @@ function ProjectList() {
         />
         {loading ? <Loader /> : <CardList items={data} />}
       </Main>
-    </div>
+    </>
   );
 }
 

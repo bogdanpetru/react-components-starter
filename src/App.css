@@ -109,3 +109,10 @@ main {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.owner-avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
